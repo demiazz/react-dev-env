@@ -1,0 +1,27 @@
+{
+  "name": "@react-dev-env/web-app-manifest-plugin",
+  "version": "0.3.2",
+  "description": "Generates Web Application Manifest and injects additional tags to the HTML",
+  "keywords": [
+    "webpack",
+    "plugin",
+    "manifest",
+    "html"
+  ],
+  "author": "Alexey Plutalov <demiazz.py@gmail.com>",
+  "homepage": "https://github.com/demiazz/react-dev-env/tree/master/packages/web-app-manifest-plugin#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/demiazz/react-dev-env/tree/master/packages/web-app-manifest-plugin",
+  "scripts": {
+    "clean": "rm -rf ./lib",
+    "compile": "yarn clean && yarn tsc --project tsconfig.json",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/demiazz/react-dev-env/issues"
+  }
+}
