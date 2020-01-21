@@ -1,6 +1,8 @@
 {
   "npmClient": "yarn",
-  "npmClientArgs": "--no-lockfile",
+  "npmClientArgs": [
+    "--no-lockfile"
+  ],
   "packages": [
     "packages/*"
   ],
