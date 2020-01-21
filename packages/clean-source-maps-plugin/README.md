@@ -1,11 +1,11 @@
-# `@rae/clean-source-maps-plugin`
+# `@react-dev-env/clean-source-maps-plugin`
 
 > TODO: description
 
 ## Usage
 
 ```
-const cleanSourceMapsPlugin = require('@rae/clean-source-maps-plugin');
+const cleanSourceMapsPlugin = require('@react-dev-env/clean-source-maps-plugin');
 
 // TODO: DEMONSTRATE API
 ```

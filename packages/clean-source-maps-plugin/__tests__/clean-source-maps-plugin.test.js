@@ -2,6 +2,6 @@
 
 const cleanSourceMapsPlugin = require('..');
 
-describe('@rae/clean-source-maps-plugin', () => {
+describe('@react-dev-env/clean-source-maps-plugin', () => {
     it('needs tests');
 });
