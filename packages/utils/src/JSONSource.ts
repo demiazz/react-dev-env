@@ -11,7 +11,7 @@ type JSONArray = JSONValue[];
 type JSONValue = JSONPrimitive | JSONObject | JSONArray;
 
 export class JSONSource extends RawSource {
-  public constructor(value: JSONValue, beautify: false) {
+  public constructor(value: JSONValue, beautify = false) {
     const source = JSON.stringify(value, null, beautify ? 2 : 0);
 
     super(source);
