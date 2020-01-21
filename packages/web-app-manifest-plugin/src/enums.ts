@@ -1,15 +1,21 @@
 export type Dir = "auto" | "ltr" | "rtl";
 
-const dirRegExp = /^(auto|ltr|rtl)$/;
+export const possibleDirValues: Dir[] = ["auto", "ltr", "rtl"];
 
-export const isDir = (value: string): value is Dir => dirRegExp.test(value);
+export const isDir = (value: any): value is Dir =>
+  possibleDirValues.includes(value as any);
 
 export type Display = "fullscreen" | "standalone" | "minimal-ui" | "browser";
 
-const displayRegExp = /^(fullscreen|standalone|minimal-ui|browser)$/;
+export const possibleDisplayValues: Display[] = [
+  "fullscreen",
+  "standalone",
+  "minimal-ui",
+  "browser"
+];
 
-export const isDisplay = (value: string): value is Display =>
-  displayRegExp.test(value);
+export const isDisplay = (value: any): value is Display =>
+  possibleDisplayValues.includes(value);
 
 export type Orientation =
   | "any"
@@ -21,10 +27,19 @@ export type Orientation =
   | "landscape-primary"
   | "landscape-secondary";
 
-const orientationRegExp = /^(any|natural|landscape|(portrait|landscape)(-(primary|secondary))?)$/;
+export const possibleOrientationValues: Orientation[] = [
+  "any",
+  "natural",
+  "landscape",
+  "portrait",
+  "portrait-primary",
+  "portrait-secondary",
+  "landscape-primary",
+  "landscape-secondary"
+];
 
-export const isOrientation = (value: string): value is Orientation =>
-  orientationRegExp.test(value);
+export const isOrientation = (value: any): value is Orientation =>
+  possibleOrientationValues.includes(value);
 
 export type Platform = "chrome_web_store" | "play" | "itunes" | "windows";
 
