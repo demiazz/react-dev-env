@@ -21,5 +21,16 @@
   },
   "bugs": {
     "url": "https://github.com/demiazz/react-dev-env/issues"
+  },
+  "peerDependencies": {
+    "webpack": "4"
+  },
+  "devDependencies": {
+    "@types/webpack": "^4.41.2",
+    "@types/webpack-sources": "^0.1.6",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "webpack-sources": "^1.4.3"
   }
 }
