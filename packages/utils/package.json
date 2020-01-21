@@ -20,8 +20,6 @@
     "url": "https://github.com/demiazz/react-dev-env/issues"
   },
   "devDependencies": {
-    "@types/node": "^13.1.8",
-    "@types/webpack-sources": "^0.1.6",
     "typescript": "^3.7.5"
   },
   "dependencies": {
