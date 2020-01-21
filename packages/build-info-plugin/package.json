@@ -16,6 +16,7 @@
   },
   "repository": "https://github.com/demiazz/react-dev-env/tree/master/packages/build-info-plugin",
   "scripts": {
+    "compile": "yarn tsc --project tsconfig.json",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
