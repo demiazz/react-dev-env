@@ -1,6 +1,6 @@
 {
   "name": "@react-dev-env/build-info-plugin",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Webpack Plugin: Writes `build-info.json` file with given build information",
   "keywords": [
     "webpack",
@@ -31,6 +31,6 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@react-dev-env/utils": "^0.3.0"
+    "@react-dev-env/utils": "^0.3.1"
   }
 }

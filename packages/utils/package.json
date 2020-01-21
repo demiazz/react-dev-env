@@ -1,6 +1,6 @@
 {
   "name": "@react-dev-env/utils",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Utilities for `@react-dev-env/*` packages",
   "author": "Alexey Plutalov <demiazz.py@gmail.com>",
   "homepage": "https://github.com/demiazz/react-dev-env/tree/master/packages/utils#readme",
