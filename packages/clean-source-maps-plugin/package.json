@@ -8,13 +8,14 @@
     "source-maps"
   ],
   "author": "Alexey Plutalov <demiazz.py@gmail.com>",
-  "homepage": "",
+  "homepage": "https://github.com/demiazz/react-dev-env/tree/master/packages/clean-source-maps-plugin#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
+  "repository": "https://github.com/demiazz/react-dev-env/tree/master/packages/clean-source-maps-plugin",
   "scripts": {
     "compile": "yarn tsc --project tsconfig.json",
     "test": "echo \"Error: run tests from root\" && exit 1"
