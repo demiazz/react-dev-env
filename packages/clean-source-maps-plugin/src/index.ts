@@ -3,13 +3,14 @@ import { join } from "path";
 import rimraf from "rimraf";
 import { Compiler, Plugin } from "webpack";
 
-export class CleanSourceMapsPlugin extends Plugin {
+export class CleanSourceMapsPlugin implements Plugin {
   apply(compiler: Compiler): void {
     compiler.hooks.done.tapAsync(
       "@react-dev-env/clean-source-maps-plugin",
       async (_, done) => {
-        const outputDir = compiler.options.output?.path ?? "dist";
-        const glob = join(outputDir, "**/*.@(js|css).map?(.br|.gz)");
+        const outputPath =
+          compiler.options.output?.path ?? join(process.cwd(), "dist");
+        const glob = join(outputPath, "**/*.@(js|css).map?(.br|.gz)");
 
         rimraf(glob, done);
       }
