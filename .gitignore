@@ -1,0 +1,12 @@
+# Cache
+.cache
+
+# NPM
+node_modules
+
+# Logs
+*.log
+
+# IDE
+.idea
+.vscode

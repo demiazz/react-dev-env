@@ -1,0 +1,8 @@
+{
+  "name": "rae",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  }
+}
