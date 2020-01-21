@@ -1,6 +1,6 @@
 {
   "name": "@react-dev-env/clean-source-maps-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Webpack Plugin: Removes source maps after they have been generated",
   "keywords": [
     "webpack",
