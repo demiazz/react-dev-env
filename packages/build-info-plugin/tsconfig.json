@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "tsBuildInfoFile": "../../.cache/build-info-plugin.tsbuildinfo"
+  },
+  "include": [
+    "./src"
+  ]
+}

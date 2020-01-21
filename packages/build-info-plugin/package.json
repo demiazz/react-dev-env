@@ -1,0 +1,24 @@
+{
+  "name": "@react-dev-env/build-info-plugin",
+  "version": "0.2.0",
+  "description": "Webpack Plugin: Writes `build-info.json` file with given build information",
+  "keywords": [
+    "webpack",
+    "plugin",
+    "build-info"
+  ],
+  "author": "Alexey Plutalov <demiazz.py@gmail.com>",
+  "homepage": "https://github.com/demiazz/react-dev-env/tree/master/packages/build-info-plugin#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/demiazz/react-dev-env/tree/master/packages/build-info-plugin",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/demiazz/react-dev-env/issues"
+  }
+}
