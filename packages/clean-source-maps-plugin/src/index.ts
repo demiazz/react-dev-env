@@ -4,7 +4,7 @@ import rimraf from "rimraf";
 import { Compiler, Plugin } from "webpack";
 
 export class CleanSourceMapsPlugin implements Plugin {
-  apply(compiler: Compiler): void {
+  public apply(compiler: Compiler): void {
     compiler.hooks.done.tapAsync(
       "@react-dev-env/clean-source-maps-plugin",
       async (_, done) => {
