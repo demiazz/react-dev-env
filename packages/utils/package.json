@@ -1,0 +1,25 @@
+{
+  "name": "@react-dev-env/utils",
+  "version": "0.3.0",
+  "description": "Utilities for `@react-dev-env/*` packages",
+  "author": "Alexey Plutalov <demiazz.py@gmail.com>",
+  "homepage": "https://github.com/demiazz/react-dev-env/tree/master/packages/utils#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/demiazz/react-dev-env/tree/master/packages/utils",
+  "scripts": {
+    "compile": "yarn tsc --project tsconfig.json",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/demiazz/react-dev-env/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.8",
+    "typescript": "^3.7.5"
+  }
+}
