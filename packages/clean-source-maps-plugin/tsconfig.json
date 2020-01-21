@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "tsBuildInfoFile": "../../.cache/clean-source-maps-plugin.tsbuildinfo"
+  },
+  "include": [
+    "./src"
+  ]
+}
