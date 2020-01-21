@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "incremental": true,
     "target": "es2018",
     "module": "commonjs",
     "declaration": true,
@@ -15,7 +14,7 @@
     "sourceMap": true,
     "removeComments": true,
     "importHelpers": false,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "skipLibCheck": true,
     "noLib": false,
 
