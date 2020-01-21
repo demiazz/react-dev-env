@@ -1,5 +1,5 @@
+import { JSONSource } from "@react-dev-env/utils";
 import { Compiler, Plugin } from "webpack";
-import { RawSource } from "webpack-sources";
 
 type BuildInfoPrimitive = string | number | boolean;
 type BuildInfoObject = {
@@ -19,7 +19,7 @@ export class BuildInfoPlugin implements Plugin {
   private readonly buildInfo: BuildInfo;
   private readonly fileName: string;
 
-  constructor({
+  public constructor({
     beautify = false,
     buildInfo = {},
     fileName = "build-info.json"
@@ -29,15 +29,12 @@ export class BuildInfoPlugin implements Plugin {
     this.buildInfo = buildInfo;
   }
 
-  apply(compiler: Compiler): void {
+  public apply(compiler: Compiler): void {
     compiler.hooks.emit.tap("build-info", compilation => {
-      compilation.assets[this.fileName] = this.createAsset();
+      compilation.assets[this.fileName] = new JSONSource(
+        this.buildInfo,
+        this.beautify
+      );
     });
-  }
-
-  private createAsset() {
-    const json = JSON.stringify(this.buildInfo, null, this.beautify ? 2 : 0);
-
-    return new RawSource(json);
   }
 }
