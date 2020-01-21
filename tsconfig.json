@@ -14,7 +14,7 @@
     "checkJs": true,
     "sourceMap": true,
     "removeComments": true,
-    "importHelpers": true,
+    "importHelpers": false,
     "isolatedModules": true,
     "skipLibCheck": true,
     "noLib": false,
