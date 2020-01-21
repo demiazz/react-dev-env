@@ -2,6 +2,9 @@
   "name": "react-dev-env",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "publish": "yarn lerna run compile && yarn lerna publish"
+  },
   "devDependencies": {
     "@types/node": "^13.1.8",
     "lerna": "^3.20.2",
