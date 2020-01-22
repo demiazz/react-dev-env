@@ -1,7 +1,7 @@
 import validateManifest from "schema-utils";
 import { Compiler, Plugin } from "webpack";
 
-import manifestSchema from "../schemas/manifest.json";
+import manifestSchema from "./schemas/manifest.json";
 
 import { Manifest } from "./types";
 

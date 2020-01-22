@@ -218,7 +218,9 @@
       "description": "The purpose represents how icon can be used.",
       "oneOf": [
         {
-          "const": "any"
+          "enum": [
+            "any", "badge", "maskable"
+          ]
         },
         {
           "type": "array",
