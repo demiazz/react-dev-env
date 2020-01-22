@@ -14,6 +14,8 @@ export type Orientation =
 
 export type Platform = "play" | "itunes" | "windows";
 
+export type Purpose = "any" | "badge" | "maskable";
+
 export interface FingerPrint {
   type: string;
   value: string;
@@ -63,18 +65,20 @@ export interface RelatedApplication {
   fingerprints?: FingerPrint[];
 }
 
-interface FavIcon {
+export interface FavIcon {
   fileName: string;
   sizes: number | number[];
 }
 
-interface AppIcon {
+export interface AppIcon {
   fileName: string;
   size: number;
+  platform?: Platform;
+  purpose?: Purpose | Exclude<Purpose, "any">[];
   appleTouchIcon?: boolean;
 }
 
-interface Screenshot extends AppIcon {}
+export interface Screenshot extends AppIcon {}
 
 export interface Manifest {
   appIcons?: AppIcon[];
