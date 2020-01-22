@@ -15,10 +15,13 @@ const serializeRelatedApplication = ({
 });
 
 export const serializeManifest = ({
+  appIcons,
   backgroundColor,
+  favIcon,
   iarcRatingId,
   preferRelatedApplication,
   relatedApplications,
+  screenshots,
   shortName,
   startUrl,
   themeColor,
