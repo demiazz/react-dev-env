@@ -37,7 +37,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
 
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": ["node_modules", "./lib"]
 }
