@@ -28,9 +28,11 @@
     "webpack": "4"
   },
   "devDependencies": {
-    "@types/webpack": "^4.41.3"
+    "@types/webpack": "^4.41.3",
+    "@types/webpack-sources": "^0.1.6"
   },
   "dependencies": {
-    "schema-utils": "^2.6.4"
+    "schema-utils": "^2.6.4",
+    "webpack-sources": "^1.4.3"
   }
 }
