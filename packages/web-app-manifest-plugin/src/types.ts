@@ -63,12 +63,27 @@ export interface RelatedApplication {
   fingerprints?: FingerPrint[];
 }
 
+interface FavIcon {
+  fileName: string;
+  sizes: number | number[];
+}
+
+interface AppIcon {
+  fileName: string;
+  size: number;
+  appleTouchIcon?: boolean;
+}
+
+interface Screenshot extends AppIcon {}
+
 export interface Manifest {
+  appIcons?: AppIcon[];
   backgroundColor?: string;
   categories?: string[];
   description?: string;
   dir?: Dir;
   display?: Display;
+  favIcon: FavIcon;
   iarcRatingId?: string;
   lang?: string;
   name: string;
@@ -76,6 +91,7 @@ export interface Manifest {
   preferRelatedApplication?: boolean;
   relatedApplications?: RelatedApplication[];
   scope?: string;
+  screenshots?: Screenshot[];
   shortName?: string;
   startUrl?: string;
   themeColor?: string;

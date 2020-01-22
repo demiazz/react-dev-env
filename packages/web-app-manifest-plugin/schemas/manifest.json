@@ -4,9 +4,17 @@
   "description": "Manifest definition for `@react-dev-env/web-app-manifest-plugin`",
   "type": "object",
   "required": [
+    "favIcon",
     "name"
   ],
   "properties": {
+    "appIcons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/appIcon"
+      },
+      "minItems": 1
+    },
     "backgroundColor": {
       "description": "Describes the expected background color of the web application",
       "type": "string"
@@ -42,6 +50,10 @@
         "standalone"
       ],
       "default": "browser"
+    },
+    "favIcon": {
+      "description": "The item represents icon which will be used as favicon",
+      "$ref": "#/definitions/favIcon"
     },
     "iarcRatingId": {
       "description": "Represents an ID value of the IARC rating of the web application. It is intended to be used to determine which ages the web application is appropriate for.",
@@ -85,6 +97,15 @@
       "description": "A string that represents the navigation scope of this web application's application context.",
       "type": "string"
     },
+    "screenshots": {
+      "description": "Images which representing the web application in common usage scenarios.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/screenshot"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
     "shortName": {
       "description": "A string that represents a short version of the name of the web application.",
       "type": "string"
@@ -99,6 +120,56 @@
     }
   },
   "definitions": {
+    "appIcon": {
+      "type": "object",
+      "required": [
+        "fileName",
+        "size"
+      ],
+      "properties": {
+        "fileName": {
+          "type": "string"
+        },
+        "size": {
+          "$ref": "#/definitions/size"
+        },
+        "appleTouchIcon": {
+          "type": "boolean"
+        },
+        "platform": {
+          "$ref": "#/definitions/platform"
+        },
+        "purpose": {
+          "$ref": "#/definitions/purpose"
+        }
+      }
+    },
+    "favIcon": {
+      "type": "object",
+      "required": [
+        "fileName",
+        "sizes"
+      ],
+      "properties": {
+        "fileName": {
+          "type": "string"
+        },
+        "sizes": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/size"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/size"
+              },
+              "minItems": 1
+            }
+          ]
+        }
+      }
+    },
     "relatedApplication": {
       "type": "object",
       "properties": {
@@ -142,6 +213,34 @@
         "itunes",
         "windows"
       ]
+    },
+    "purpose": {
+      "description": "The purpose represents how icon can be used.",
+      "oneOf": [
+        {
+          "const": "any"
+        },
+        {
+          "type": "array",
+          "items": {
+            "enum": [
+              "badge",
+              "maskable"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      ]
+    },
+    "screenshot": {
+      "description": "Represents the web application in common usage scenarios.",
+      "$ref": "#/definitions/appIcon"
+    },
+    "size": {
+      "description": "The size represents a size of the an image.",
+      "type": "number",
+      "minimum": 1
     }
   }
 }
