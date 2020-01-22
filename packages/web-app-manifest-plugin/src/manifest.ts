@@ -21,13 +21,6 @@ export interface RelatedApplication {
   fingerprints?: FingerPrint[];
 }
 
-export interface ServiceWorker {
-  src?: string;
-  scope?: string;
-  type?: string;
-  update_via_cache?: string;
-}
-
 export interface Manifest {
   background_color?: string;
   categories?: string[];
@@ -43,7 +36,6 @@ export interface Manifest {
   related_applications?: RelatedApplication[];
   scope?: string;
   screenshots?: Image[];
-  serviceworker?: ServiceWorker;
   short_name?: string;
   start_url?: string;
   theme_color?: string;
