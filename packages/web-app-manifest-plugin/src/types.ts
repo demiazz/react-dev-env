@@ -19,7 +19,7 @@ export interface FingerPrint {
   value: string;
 }
 
-export interface Image {
+export interface WebAppManifestImage {
   src: string;
   sizes?: string;
   type?: string;
@@ -27,7 +27,7 @@ export interface Image {
   platform?: string;
 }
 
-export interface RelatedApplication {
+export interface WebAppManifestRelatedApplication {
   platform: Platform;
   url?: string;
   id?: string;
@@ -35,27 +35,27 @@ export interface RelatedApplication {
   fingerprints?: FingerPrint[];
 }
 
-export interface Manifest {
+export interface WebAppManifest {
   background_color?: string;
   categories?: string[];
   description?: string;
   dir?: Dir;
   display?: Display;
   iarc_rating_id?: string;
-  icons: Image[];
+  icons: WebAppManifestImage[];
   lang?: string;
   name: string;
   orientation?: Orientation;
   prefer_related_applications?: boolean;
-  related_applications?: RelatedApplication[];
+  related_applications?: WebAppManifestRelatedApplication[];
   scope?: string;
-  screenshots?: Image[];
+  screenshots?: WebAppManifestImage[];
   short_name?: string;
   start_url?: string;
   theme_color?: string;
 }
 
-export interface RelatedApplicationOptions {
+export interface RelatedApplication {
   platform: Platform;
   url?: string;
   id?: string;
@@ -63,7 +63,7 @@ export interface RelatedApplicationOptions {
   fingerprints?: FingerPrint[];
 }
 
-export interface Options {
+export interface Manifest {
   backgroundColor?: string;
   categories?: string[];
   description?: string;
@@ -74,7 +74,7 @@ export interface Options {
   name: string;
   orientation?: Orientation;
   preferRelatedApplication?: boolean;
-  relatedApplications?: RelatedApplicationOptions[];
+  relatedApplications?: RelatedApplication[];
   scope?: string;
   shortName?: string;
   startUrl?: string;
