@@ -5,6 +5,7 @@ import { prepareAssetsAndManifest } from "./manifest";
 import manifestOptionsSchema from "./schemas/manifestOptions.json";
 import optionsSchema from "./schemas/options.json";
 import { ManifestOptions } from "./types";
+import { context, publicPath, writeAssets } from "./webpack-utils";
 
 interface Options {
   beautify?: boolean;
@@ -36,14 +37,12 @@ export class WebAppManifestPlugin implements Plugin {
           this.manifestOptions,
           {
             beautify: this.beautify,
-            context: compiler.options.context ?? process.cwd(),
-            publicPath: compiler.options.output?.publicPath ?? ""
+            context: context(compiler),
+            publicPath: publicPath(compiler)
           }
         );
 
-        for (const { filePath, source } of assets) {
-          compilation.assets[filePath] = source;
-        }
+        writeAssets(assets, compilation);
       }
     );
   }
