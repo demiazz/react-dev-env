@@ -1,12 +1,11 @@
 import { createHash } from "crypto";
-import { readFile as readFileWithCallback } from "fs";
 import { imageSize } from "image-size";
 import { lookup } from "mime-types";
 import { extname, isAbsolute, join, resolve } from "path";
-import { promisify } from "util";
 import { RawSource } from "webpack-sources";
 
 import { Asset, Image, ExtendedImageResource, Purpose } from "./types";
+import { readFile } from "./utils";
 
 interface Dimensions {
   height?: number;
@@ -143,7 +142,7 @@ async function readImage(
     publicPath: string;
   }
 ): Promise<ReadedImage> {
-  const data = await promisify(readFileWithCallback)(filePath);
+  const data = await readFile(filePath);
 
   const assetPath = `${fileName}-${calculateHash(data)}${extname(filePath)}`;
   const source = new RawSource((data as unknown) as string);

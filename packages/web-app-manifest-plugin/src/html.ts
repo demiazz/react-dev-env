@@ -8,6 +8,7 @@ import {
   parse,
   serialize
 } from "parse5";
+
 import { Manifest } from "./types";
 
 type AttributesMap = Record<string, string | undefined>;

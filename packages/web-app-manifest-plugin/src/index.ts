@@ -1,6 +1,7 @@
 import validateOptions from "schema-utils";
 import { Compiler, Plugin } from "webpack";
 
+import { injectToHTML } from "./html";
 import { prepareAssetsAndManifest } from "./manifest";
 import manifestOptionsSchema from "./schemas/manifestOptions.json";
 import optionsSchema from "./schemas/options.json";
@@ -11,7 +12,6 @@ import {
   publicPath,
   writeAssets
 } from "./webpack-utils";
-import { injectToHTML } from "./html";
 
 interface Options {
   beautify?: boolean;
