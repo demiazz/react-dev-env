@@ -1,14 +1,6 @@
 import { RawSource } from "webpack-sources";
 
-type JSONPrimitive = string | number | boolean | null;
-
-type JSONObject = {
-  [property: string]: JSONValue;
-};
-
-type JSONArray = JSONValue[];
-
-type JSONValue = JSONPrimitive | JSONObject | JSONArray;
+import { JSONValue } from "./types";
 
 export class JSONSource extends RawSource {
   public constructor(value: JSONValue, beautify = false) {
