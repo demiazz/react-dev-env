@@ -39,9 +39,14 @@ export class WebAppManifestPlugin implements Plugin {
     const assetsAndManifestPromise = prepareAssetsAndManifest(
       this.manifestOptions,
       {
+        appIconFileName: "web-application/icons/icon-[hash].[ext]",
         beautify: this.beautify,
         context: context(compiler),
-        publicPath: publicPath(compiler)
+        favIconFileName: "favicon-[hash].[ext]",
+        manifestFileName: "manifest-[hash].[ext]",
+        publicPath: publicPath(compiler),
+        screenshotFileName:
+          "web-application/screenshots/screenshot-[hash].[ext]"
       }
     );
 

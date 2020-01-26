@@ -1,11 +1,10 @@
-import { createHash } from "crypto";
 import { imageSize } from "image-size";
 import { lookup } from "mime-types";
 import { extname, isAbsolute, join, resolve } from "path";
 import { RawSource } from "webpack-sources";
 
 import { Asset, Image, ExtendedImageResource, Purpose } from "./types";
-import { readFile } from "./utils";
+import { calculateHash, interpolateFileName, readFile } from "./utils";
 
 interface Dimensions {
   height?: number;
@@ -96,13 +95,6 @@ function resolveImages(images: Image[], context: string): ResolvedImages {
   return resolvedImages;
 }
 
-function calculateHash(data: Buffer): string {
-  return createHash("md5")
-    .update(data)
-    .digest("hex")
-    .slice(0, 8);
-}
-
 function serializeDimensions(dimensions: Dimensions): string | undefined {
   const width = dimensions.width;
   const height = dimensions.height;
@@ -144,7 +136,11 @@ async function readImage(
 ): Promise<ReadedImage> {
   const data = await readFile(filePath);
 
-  const assetPath = `${fileName}-${calculateHash(data)}${extname(filePath)}`;
+  const assetPath = interpolateFileName(
+    fileName,
+    calculateHash(data),
+    extname(filePath).slice(1)
+  );
   const source = new RawSource((data as unknown) as string);
 
   const src = join(publicPath, assetPath);

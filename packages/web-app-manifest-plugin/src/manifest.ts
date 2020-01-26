@@ -12,6 +12,7 @@ import {
   RelatedApplication,
   WebAppManifest
 } from "./types";
+import { calculateHash, interpolateFileName } from "./utils";
 
 function serializeExtendedImageResource({
   appleTouchIcon,
@@ -40,11 +41,10 @@ function serializeManifest({
   relatedApplications,
   screenshots,
   shortName,
-  src,
   startUrl,
   themeColor,
   ...manifestProperties
-}: Manifest): WebAppManifest {
+}: Omit<Manifest, "src">): WebAppManifest {
   const icons = [serializeExtendedImageResource(favIcon)];
 
   if (appIcons && appIcons.length > 0) {
@@ -77,15 +77,41 @@ function serializeManifest({
   return webAppManifest;
 }
 
+function manifestToAsset(
+  manifest: Omit<Manifest, "src">,
+  { beautify, fileName }: { beautify: boolean; fileName: string }
+): Asset {
+  const source = new JSONSource(
+    (serializeManifest(manifest) as unknown) as JSONValue,
+    beautify
+  );
+  const hash = calculateHash(source.source());
+
+  return {
+    filePath: interpolateFileName(fileName, hash, "json"),
+    source
+  };
+}
+
 export async function prepareAssetsAndManifest(
   { appIcons, favIcon, screenshots, ...manifestProperties }: ManifestOptions,
-  options: {
+  {
+    appIconFileName,
+    beautify,
+    favIconFileName,
+    manifestFileName,
+    screenshotFileName,
+    ...options
+  }: {
+    appIconFileName: string;
     beautify: boolean;
     context: string;
+    favIconFileName: string;
+    manifestFileName: string;
     publicPath: string;
+    screenshotFileName: string;
   }
 ): Promise<{ assets: Asset[]; manifest: Manifest }> {
-  const manifestFilePath = "web-application/manifest.json";
   const assets: Asset[] = [];
 
   const {
@@ -93,16 +119,15 @@ export async function prepareAssetsAndManifest(
     resources: [favIconResource]
   } = await readAssetsAndResources([{ filePath: favIcon }], {
     ...options,
-    fileName: "favicon"
+    fileName: favIconFileName
   });
 
   assets.push(favIconAsset);
 
-  const manifest: Manifest = {
+  const manifest: Omit<Manifest, "src"> = {
     ...manifestProperties,
 
-    favIcon: favIconResource,
-    src: join(options.publicPath, manifestFilePath)
+    favIcon: favIconResource
   };
 
   if (appIcons && appIcons.length > 0) {
@@ -111,7 +136,7 @@ export async function prepareAssetsAndManifest(
       resources: appIconsResources
     } = await readAssetsAndResources(appIcons, {
       ...options,
-      fileName: "web-application/app-icons/app-icon"
+      fileName: appIconFileName
     });
 
     assets.push(...appIconsAssets);
@@ -126,7 +151,7 @@ export async function prepareAssetsAndManifest(
       resources: screenshotsResources
     } = await readAssetsAndResources(screenshots, {
       ...options,
-      fileName: "web-application/screenshots/screenshot"
+      fileName: screenshotFileName
     });
 
     assets.push(...screenshotsAssets);
@@ -135,13 +160,13 @@ export async function prepareAssetsAndManifest(
     manifest.screenshots = undefined;
   }
 
-  assets.push({
-    filePath: "web-application/manifest.json",
-    source: new JSONSource(
-      (serializeManifest(manifest) as unknown) as JSONValue,
-      options.beautify
-    )
+  const manifestAsset = manifestToAsset(manifest, {
+    beautify,
+    fileName: manifestFileName
   });
+  const manifestSrc = join(options.publicPath, manifestAsset.filePath);
 
-  return { assets, manifest };
+  assets.push(manifestAsset);
+
+  return { assets, manifest: { ...manifest, src: manifestSrc } };
 }
