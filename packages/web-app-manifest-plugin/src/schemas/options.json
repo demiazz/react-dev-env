@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WebAppManifestPluginOptions",
+  "description": "Manifest options schema for `@react-dev-env/web-app-manifest-plugin`",
+  "type": "object",
+  "properties": {
+    "beautify": {
+      "description": "Represents usage of formatting for resulting manifest file",
+      "type": "boolean"
+    }
+  }
+}

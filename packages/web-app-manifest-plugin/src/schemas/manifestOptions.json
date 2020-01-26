@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "WebAppManifestPluginOptions",
-  "description": "Manifest definition for `@react-dev-env/web-app-manifest-plugin`",
+  "title": "WebAppManifestPluginManifestOptions",
+  "description": "Options schema for `@react-dev-env/web-app-manifest-plugin`",
   "type": "object",
   "required": [
     "favIcon",
@@ -9,9 +9,10 @@
   ],
   "properties": {
     "appIcons": {
+      "description": "Represents iconic representation of the application on various platforms.",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/appIcon"
+        "$ref": "#/definitions/image"
       },
       "minItems": 1
     },
@@ -53,7 +54,7 @@
     },
     "favIcon": {
       "description": "The item represents icon which will be used as favicon",
-      "$ref": "#/definitions/favIcon"
+      "type": "string"
     },
     "iarcRatingId": {
       "description": "Represents an ID value of the IARC rating of the web application. It is intended to be used to determine which ages the web application is appropriate for.",
@@ -101,7 +102,7 @@
       "description": "Images which representing the web application in common usage scenarios.",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/screenshot"
+        "$ref": "#/definitions/image"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -120,18 +121,15 @@
     }
   },
   "definitions": {
-    "appIcon": {
+    "image": {
+      "description": "Represents an image that is used as part of a web application, suitable to use in various contexts depending on the semantics of the member that is using the object (e.g., an icon that is part of an application menu, etc.)",
       "type": "object",
       "required": [
-        "fileName",
-        "size"
+        "filePath"
       ],
       "properties": {
-        "fileName": {
+        "filePath": {
           "type": "string"
-        },
-        "size": {
-          "$ref": "#/definitions/size"
         },
         "appleTouchIcon": {
           "type": "boolean"
@@ -144,33 +142,8 @@
         }
       }
     },
-    "favIcon": {
-      "type": "object",
-      "required": [
-        "fileName",
-        "sizes"
-      ],
-      "properties": {
-        "fileName": {
-          "type": "string"
-        },
-        "sizes": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/size"
-            },
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/size"
-              },
-              "minItems": 1
-            }
-          ]
-        }
-      }
-    },
     "relatedApplication": {
+      "description": "Represents an application related to the web application",
       "type": "object",
       "properties": {
         "platform": {
@@ -234,15 +207,6 @@
           "minItems": 1
         }
       ]
-    },
-    "screenshot": {
-      "description": "Represents the web application in common usage scenarios.",
-      "$ref": "#/definitions/appIcon"
-    },
-    "size": {
-      "description": "The size represents a size of the an image.",
-      "type": "number",
-      "minimum": 1
     }
   }
 }
