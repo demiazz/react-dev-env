@@ -1,6 +1,73 @@
+import { Source } from "webpack-sources";
+
+export interface Asset {
+  filePath: string;
+  source: Source;
+}
+
 export type Dir = "auto" | "ltr" | "rtl";
 
 export type Display = "fullscreen" | "standalone" | "minimal-ui" | "browser";
+
+export interface ExtendedImageResource extends ImageResource {
+  appleTouchIcon?: boolean;
+}
+
+export interface ExternalApplicationResource {
+  platform: Platform;
+  url?: string;
+  id?: string;
+  min_version?: string;
+  fingerprints?: FingerPrint[];
+}
+
+export interface Image {
+  appleTouchIcon?: boolean;
+  filePath: string;
+  platform?: Platform;
+  purpose?: Purpose;
+}
+
+export interface ImageResource {
+  platform?: string;
+  purpose?: string;
+  sizes?: string;
+  src: string;
+  type?: string;
+}
+
+export interface FingerPrint {
+  type: string;
+  value: string;
+}
+
+export interface Manifest
+  extends Omit<ManifestOptions, "appIcons" | "favIcon" | "screenshots"> {
+  appIcons?: ExtendedImageResource[];
+  favIcon: Pick<ExtendedImageResource, "src" | "sizes" | "type">;
+  screenshots?: Omit<ExtendedImageResource, "appleTouchIcon">[];
+}
+
+export interface ManifestOptions {
+  appIcons?: Image[];
+  backgroundColor?: string;
+  categories?: string[];
+  description?: string;
+  dir?: Dir;
+  display?: Display;
+  favIcon: string;
+  iarcRatingId?: string;
+  lang?: string;
+  name: string;
+  orientation?: Orientation;
+  preferRelatedApplication?: boolean;
+  relatedApplications?: RelatedApplication[];
+  scope?: string;
+  screenshots?: Image[];
+  shortName?: string;
+  startUrl?: string;
+  themeColor?: string;
+}
 
 export type Orientation =
   | "any"
@@ -14,26 +81,13 @@ export type Orientation =
 
 export type Platform = "play" | "itunes" | "windows";
 
-export type Purpose = "any" | "badge" | "maskable";
+export type Purpose = "any" | "badge" | "maskable" | ("badge" | "maskable")[];
 
-export interface FingerPrint {
-  type: string;
-  value: string;
-}
-
-export interface WebAppManifestImage {
-  src: string;
-  sizes?: string;
-  type?: string;
-  purpose?: string;
-  platform?: string;
-}
-
-export interface WebAppManifestRelatedApplication {
+export interface RelatedApplication {
   platform: Platform;
   url?: string;
   id?: string;
-  min_version?: string;
+  minVersion?: string;
   fingerprints?: FingerPrint[];
 }
 
@@ -44,59 +98,15 @@ export interface WebAppManifest {
   dir?: Dir;
   display?: Display;
   iarc_rating_id?: string;
-  icons: WebAppManifestImage[];
+  icons: ImageResource[];
   lang?: string;
   name: string;
   orientation?: Orientation;
   prefer_related_applications?: boolean;
-  related_applications?: WebAppManifestRelatedApplication[];
+  related_applications?: ExternalApplicationResource[];
   scope?: string;
-  screenshots?: WebAppManifestImage[];
+  screenshots?: ImageResource[];
   short_name?: string;
   start_url?: string;
   theme_color?: string;
-}
-
-export interface RelatedApplication {
-  platform: Platform;
-  url?: string;
-  id?: string;
-  minVersion?: string;
-  fingerprints?: FingerPrint[];
-}
-
-export interface FavIcon {
-  fileName: string;
-  sizes: number | number[];
-}
-
-export interface AppIcon {
-  fileName: string;
-  size: number;
-  platform?: Platform;
-  purpose?: Purpose | Exclude<Purpose, "any">[];
-  appleTouchIcon?: boolean;
-}
-
-export interface Screenshot extends AppIcon {}
-
-export interface Manifest {
-  appIcons?: AppIcon[];
-  backgroundColor?: string;
-  categories?: string[];
-  description?: string;
-  dir?: Dir;
-  display?: Display;
-  favIcon: FavIcon;
-  iarcRatingId?: string;
-  lang?: string;
-  name: string;
-  orientation?: Orientation;
-  preferRelatedApplication?: boolean;
-  relatedApplications?: RelatedApplication[];
-  scope?: string;
-  screenshots?: Screenshot[];
-  shortName?: string;
-  startUrl?: string;
-  themeColor?: string;
 }
