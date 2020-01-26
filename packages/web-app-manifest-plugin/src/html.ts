@@ -9,7 +9,7 @@ import {
   serialize
 } from "parse5";
 
-import { Manifest } from "./types";
+import { ExtendedImageResource, Manifest } from "./types";
 
 type AttributesMap = Record<string, string | undefined>;
 
@@ -174,6 +174,22 @@ function sortNodes(nodes: DefaultTreeElement[]): DefaultTreeElement[] {
   );
 }
 
+function squashAppIcons(
+  appIcons: ExtendedImageResource[]
+): ExtendedImageResource[] {
+  const hits: Record<string, ExtendedImageResource> = {};
+
+  for (const icon of appIcons) {
+    const hit = `${icon.src}:${icon.sizes}`;
+
+    if (hits[hit] == null) {
+      hits[hit] = icon;
+    }
+  }
+
+  return Object.values(hits);
+}
+
 export function injectToHTML(
   source: string,
   { appIcons, description, favIcon, lang, name, src, themeColor }: Manifest
@@ -205,7 +221,9 @@ export function injectToHTML(
         rel: "apple-touch-icon"
       });
     } else if (appleTouchIcons.length > 1) {
-      for (const { src, sizes } of appleTouchIcons) {
+      const uniqueIcons = squashAppIcons(appleTouchIcons);
+
+      for (const { src, sizes } of uniqueIcons) {
         appendLinkTag(head, {
           href: src,
           rel: "apple-touch-icon",
