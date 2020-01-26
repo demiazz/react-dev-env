@@ -45,6 +45,7 @@ export interface Manifest
   extends Omit<ManifestOptions, "appIcons" | "favIcon" | "screenshots"> {
   appIcons?: ExtendedImageResource[];
   favIcon: Pick<ExtendedImageResource, "src" | "sizes" | "type">;
+  src: string;
   screenshots?: Omit<ExtendedImageResource, "appleTouchIcon">[];
 }
 

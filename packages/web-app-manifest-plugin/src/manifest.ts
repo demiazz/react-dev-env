@@ -1,3 +1,4 @@
+import { join } from "path";
 import { JSONSource, JSONValue } from "@react-dev-env/utils";
 
 import { readAssetsAndResources } from "./images";
@@ -39,6 +40,7 @@ function serializeManifest({
   relatedApplications,
   screenshots,
   shortName,
+  src,
   startUrl,
   themeColor,
   ...manifestProperties
@@ -83,6 +85,7 @@ export async function prepareAssetsAndManifest(
     publicPath: string;
   }
 ): Promise<{ assets: Asset[]; manifest: Manifest }> {
+  const manifestFilePath = "web-application/manifest.json";
   const assets: Asset[] = [];
 
   const {
@@ -98,7 +101,8 @@ export async function prepareAssetsAndManifest(
   const manifest: Manifest = {
     ...manifestProperties,
 
-    favIcon: favIconResource
+    favIcon: favIconResource,
+    src: join(options.publicPath, manifestFilePath)
   };
 
   if (appIcons && appIcons.length > 0) {
