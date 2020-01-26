@@ -4,9 +4,25 @@
   "description": "Manifest options schema for `@react-dev-env/web-app-manifest-plugin`",
   "type": "object",
   "properties": {
+    "appIconFileName": {
+      "description": "Represents icon filename pattern",
+      "type": "string"
+    },
     "beautify": {
       "description": "Represents usage of formatting for resulting manifest file",
       "type": "boolean"
+    },
+    "favIconFileName": {
+      "description": "Represents favicon filename pattern",
+      "type": "string"
+    },
+    "manifestFileName": {
+      "description": "Represents manifest filename pattern",
+      "type": "string"
+    },
+    "screenshotFileName": {
+      "description": "Represents screenshot filename pattern",
+      "type": "string"
     }
   }
 }

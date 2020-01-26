@@ -14,12 +14,22 @@ import {
 } from "./webpack-utils";
 
 interface Options {
+  appIconFileName?: string;
   beautify?: boolean;
+  favIconFileName?: string;
+  manifestFileName?: string;
+  screenshotFileName?: string;
 }
 
 export class WebAppManifestPlugin implements Plugin {
-  public readonly manifestOptions: ManifestOptions;
-  public readonly beautify: boolean;
+  private readonly manifestOptions: ManifestOptions;
+
+  private readonly beautify: boolean;
+
+  private readonly appIconFileName: string;
+  private readonly favIconFileName: string;
+  private readonly manifestFileName: string;
+  private readonly screenshotFileName: string;
 
   public constructor(manifestOptions: ManifestOptions, options: Options = {}) {
     validateOptions(manifestOptionsSchema, manifestOptions, {
@@ -32,21 +42,31 @@ export class WebAppManifestPlugin implements Plugin {
     });
 
     this.manifestOptions = manifestOptions;
+
     this.beautify = options.beautify ?? false;
+
+    this.appIconFileName =
+      options.appIconFileName ?? "web-application/icons/icon-[hash].[ext]";
+    this.favIconFileName =
+      options.favIconFileName ?? "web-application/favicon-[hash].[ext]";
+    this.manifestFileName =
+      options.manifestFileName ?? "web-application/manifest-[hash].[ext]";
+    this.screenshotFileName =
+      options.screenshotFileName ??
+      "web-application/screenshots/screenshot-[hash].[ext]";
   }
 
   public apply(compiler: Compiler): void {
     const assetsAndManifestPromise = prepareAssetsAndManifest(
       this.manifestOptions,
       {
-        appIconFileName: "web-application/icons/icon-[hash].[ext]",
+        appIconFileName: this.appIconFileName,
         beautify: this.beautify,
         context: context(compiler),
-        favIconFileName: "favicon-[hash].[ext]",
-        manifestFileName: "manifest-[hash].[ext]",
+        favIconFileName: this.favIconFileName,
+        manifestFileName: this.manifestFileName,
         publicPath: publicPath(compiler),
-        screenshotFileName:
-          "web-application/screenshots/screenshot-[hash].[ext]"
+        screenshotFileName: this.screenshotFileName
       }
     );
 
