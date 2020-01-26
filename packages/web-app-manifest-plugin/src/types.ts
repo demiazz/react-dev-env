@@ -1,4 +1,6 @@
 import { Source } from "webpack-sources";
+import { compilation } from "webpack";
+import { Hook } from "tapable";
 
 export interface Asset {
   filePath: string;
@@ -19,6 +21,16 @@ export interface ExternalApplicationResource {
   id?: string;
   min_version?: string;
   fingerprints?: FingerPrint[];
+}
+
+// NOTE: We use `html-webpack-plugin@4.x.x`, but it's in the beta now and have
+//       no right typings.
+export interface HtmlPlugin {
+  getHooks(compilation: compilation.Compilation): HtmlPluginHooks;
+}
+
+export interface HtmlPluginHooks {
+  afterTemplateExecution: Hook<{ html: string }>;
 }
 
 export interface Image {

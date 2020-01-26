@@ -25,11 +25,14 @@
     "url": "https://github.com/demiazz/react-dev-env/issues"
   },
   "peerDependencies": {
+    "html-webpack-plugin": "^4.0.0-beta.11",
     "webpack": "4"
   },
   "devDependencies": {
     "@types/image-size": "^0.8.0",
     "@types/mime-types": "^2.1.0",
+    "@types/parse5": "^5.0.2",
+    "@types/tapable": "^1.0.5",
     "@types/webpack": "^4.41.3",
     "@types/webpack-sources": "^0.1.6"
   },
@@ -37,6 +40,8 @@
     "@react-dev-env/utils": "^0.3.2",
     "image-size": "^0.8.3",
     "mime-types": "^2.1.26",
+    "param-case": "^3.0.3",
+    "parse5": "^5.1.1",
     "schema-utils": "^2.6.4",
     "webpack-sources": "^1.4.3"
   }
