@@ -30,7 +30,7 @@ export class BuildInfoPlugin implements Plugin {
   }
 
   public apply(compiler: Compiler): void {
-    compiler.hooks.emit.tap("build-info", compilation => {
+    compiler.hooks.emit.tap("@react-dev-env/build-info", compilation => {
       compilation.assets[this.fileName] = new JSONSource(
         this.buildInfo,
         this.beautify
