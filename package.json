@@ -6,7 +6,7 @@
     "publish": "yarn lerna run compile && yarn lerna publish"
   },
   "devDependencies": {
-    "@types/node": "^13.1.8",
+    "@types/node": "^13.5.0",
     "lerna": "^3.20.2",
     "prettier": "^1.19.1",
     "typescript": "^3.7.5"
