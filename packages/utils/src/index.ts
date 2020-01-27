@@ -1,4 +1,5 @@
 export { JSONSource } from "./JSONSource";
+export { branch, revision } from "./git";
 export {
   setDefaultNodeEnvironment,
   validateNodeEnvironment
