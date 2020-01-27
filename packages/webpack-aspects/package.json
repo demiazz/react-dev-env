@@ -24,5 +24,13 @@
   },
   "peerDependencies": {
     "webpack": "4"
+  },
+  "dependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.3.0",
+    "circular-dependency-plugin": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/case-sensitive-paths-webpack-plugin": "^2.1.4",
+    "@types/circular-dependency-plugin": "^5.0.0"
   }
 }
