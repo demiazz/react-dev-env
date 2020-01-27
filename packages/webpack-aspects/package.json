@@ -1,0 +1,28 @@
+{
+  "name": "@react-dev-env/webpack-aspects",
+  "version": "0.4.0",
+  "description": "Configuration blocks for Webpack",
+  "keywords": [
+    "webpack",
+    "configuration"
+  ],
+  "author": "Alexey Plutalov <demiazz.py@gmail.com>",
+  "homepage": "https://github.com/demiazz/react-dev-env/tree/master/packages/webpack-aspects#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/demiazz/react-dev-env/tree/master/packages/webpack-aspects",
+  "scripts": {
+    "clean": "rm -rf ./lib",
+    "compile": "yarn clean && yarn tsc --project tsconfig.json",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/demiazz/react-dev-env/issues"
+  },
+  "peerDependencies": {
+    "webpack": "4"
+  }
+}
