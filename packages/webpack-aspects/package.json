@@ -23,7 +23,9 @@
     "url": "https://github.com/demiazz/react-dev-env/issues"
   },
   "peerDependencies": {
-    "webpack": "4",
+    "webpack": "4"
+  },
+  "optionalDependencies": {
     "treat": "^1.2.2"
   },
   "dependencies": {
