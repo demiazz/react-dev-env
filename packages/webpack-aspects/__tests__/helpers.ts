@@ -13,3 +13,7 @@ export function saveEnvironment() {
 export function restoreEnvironment() {
   process.env = environmentBackup.processEnvironment;
 }
+
+export function i(value: unknown): string {
+  return value === undefined ? '"undefined"' : JSON.stringify(value);
+}
