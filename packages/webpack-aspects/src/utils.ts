@@ -1,6 +1,16 @@
-import { Configuration, Plugin } from "webpack";
+import { Configuration, Module, Plugin } from "webpack";
 
 export const nodeModulesPattern = /[\\/]node_modules[\\/]/;
+
+export function ensureModule(configuration: Configuration): Module {
+  if (!configuration.module) {
+    configuration.module = {
+      rules: []
+    };
+  }
+
+  return configuration.module;
+}
 
 export function ensurePlugins(configuration: Configuration): Plugin[] {
   if (!configuration.plugins) {
