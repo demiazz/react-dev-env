@@ -1,20 +1,14 @@
 import faker from "faker";
+
 import { checkBooleanEnvironmentVariable } from "../src/utils";
+
+import { saveEnvironment, restoreEnvironment } from "./helpers";
 
 describe("@react-dev-env/webpack-aspects", () => {
   describe("utils", () => {
     describe("checkBooleanEnvironmentVariable", () => {
-      let environmentBackup: NodeJS.ProcessEnv;
-
-      beforeEach(() => {
-        environmentBackup = process.env;
-
-        process.env = {};
-      });
-
-      afterEach(() => {
-        process.env = environmentBackup;
-      });
+      beforeEach(saveEnvironment);
+      afterEach(restoreEnvironment);
 
       const samples: [string | undefined, boolean][] = [
         [undefined, false],
