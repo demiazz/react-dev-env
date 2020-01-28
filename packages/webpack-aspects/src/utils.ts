@@ -1,4 +1,4 @@
-import { Configuration, Module, Plugin } from "webpack";
+import { Configuration, Module, Plugin, RuleSetRule } from "webpack";
 
 export const nodeModulesPattern = /[\\/]node_modules[\\/]/;
 
@@ -18,6 +18,16 @@ export function ensurePlugins(configuration: Configuration): Plugin[] {
   }
 
   return configuration.plugins;
+}
+
+export function ensureRules(configuration: Configuration): RuleSetRule[] {
+  const module = ensureModule(configuration);
+
+  if (!module.rules) {
+    module.rules = [];
+  }
+
+  return module.rules;
 }
 
 export function checkBooleanEnvironmentVariable(variable: string): boolean {
