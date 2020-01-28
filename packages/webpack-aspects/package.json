@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
-    "circular-dependency-plugin": "^5.2.0"
+    "circular-dependency-plugin": "^5.2.0",
+    "css-loader": "^3.4.2"
   },
   "devDependencies": {
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.4",
