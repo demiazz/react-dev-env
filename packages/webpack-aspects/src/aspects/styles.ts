@@ -1,3 +1,5 @@
+import MiniCSSExtractPlugin from "mini-css-extract-plugin";
+import TreatPlugin from "treat/webpack-plugin";
 import { Configuration } from "webpack";
 
 import { Environment } from "../environment";
@@ -20,8 +22,8 @@ export function styles(configuration: Configuration, environment: Environment) {
     ? MiniCSSExtractPlugin.loader
     : styleLoader();
 
-  const plugins = ensurePlugins(config);
-  const rules = ensureRules(config);
+  const plugins = ensurePlugins(configuration);
+  const rules = ensureRules(configuration);
 
   rules.push({
     test: cssPattern,
