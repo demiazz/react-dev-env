@@ -2,10 +2,9 @@ import { Configuration } from "webpack";
 
 import { Environment } from "../environment";
 
-export function misc(
+export function mode(
   configuration: Configuration,
   { isProductionBuild }: Environment
 ) {
-  // Should stop a production build if an error happened.
-  configuration.bail = isProductionBuild;
+  configuration.mode = isProductionBuild ? "production" : "development";
 }
