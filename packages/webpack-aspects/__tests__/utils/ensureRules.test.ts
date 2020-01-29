@@ -3,7 +3,7 @@ import { Configuration, RuleSetRule } from "webpack";
 import { ensureRules } from "../../src/utils";
 
 describe("utils", () => {
-  describe("ensureModule", () => {
+  describe("ensureRules", () => {
     describe('when configuration have no "module" property', () => {
       let configuration: Configuration;
 

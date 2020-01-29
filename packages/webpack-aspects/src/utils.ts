@@ -1,6 +1,19 @@
-import { Configuration, Module, Plugin, RuleSetRule } from "webpack";
+import { Tapable } from "tapable";
+import { Configuration, Module, Options, Plugin, RuleSetRule } from "webpack";
 
 export const nodeModulesPattern = /[\\/]node_modules[\\/]/;
+
+export function ensureMinimizer(
+  configuration: Configuration
+): (Plugin | Tapable.Plugin)[] {
+  const optimization = ensureOptimization(configuration);
+
+  if (!optimization.minimizer) {
+    optimization.minimizer = [];
+  }
+
+  return optimization.minimizer;
+}
 
 export function ensureModule(configuration: Configuration): Module {
   if (!configuration.module) {
@@ -10,6 +23,16 @@ export function ensureModule(configuration: Configuration): Module {
   }
 
   return configuration.module;
+}
+
+export function ensureOptimization(
+  configuration: Configuration
+): Options.Optimization {
+  if (!configuration.optimization) {
+    configuration.optimization = {};
+  }
+
+  return configuration.optimization;
 }
 
 export function ensurePlugins(configuration: Configuration): Plugin[] {
