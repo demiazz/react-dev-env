@@ -1,5 +1,6 @@
-import { resolve } from "path";
 import faker from "faker";
+import { resolve } from "path";
+
 import { createEnvironment } from "../../src/environment";
 
 describe("environment", () => {
