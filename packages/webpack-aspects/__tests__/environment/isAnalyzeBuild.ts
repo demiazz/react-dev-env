@@ -19,7 +19,9 @@ describe("environment", () => {
         it(`equals to ${i(expected)}`, async () => {
           process.env.ANALYZE = analyze;
 
-          const { isAnalyzeBuild } = await createEnvironment();
+          const { isAnalyzeBuild } = await createEnvironment({
+            rootDir: __dirname
+          });
 
           expect(isAnalyzeBuild).toBe(expected);
         });

@@ -19,7 +19,9 @@ describe("environment", () => {
         it(`equals to ${i(expected)}`, async () => {
           process.env.CI = ci;
 
-          const { isCIBuild } = await createEnvironment();
+          const { isCIBuild } = await createEnvironment({
+            rootDir: __dirname
+          });
 
           expect(isCIBuild).toBe(expected);
         });

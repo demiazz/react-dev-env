@@ -17,7 +17,9 @@ describe("environment", () => {
         it(`equals to ${i(expected)}`, async () => {
           process.env.NODE_ENV = environment;
 
-          const { isDevelopmentBuild } = await createEnvironment();
+          const { isDevelopmentBuild } = await createEnvironment({
+            rootDir: __dirname
+          });
 
           expect(isDevelopmentBuild).toBe(expected);
         });

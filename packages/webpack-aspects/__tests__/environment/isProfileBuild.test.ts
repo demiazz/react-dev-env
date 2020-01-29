@@ -26,7 +26,9 @@ describe("environment", () => {
             process.env.NODE_ENV = environment;
             process.env.PROFILE = profile;
 
-            const { isProfileBuild } = await createEnvironment();
+            const { isProfileBuild } = await createEnvironment({
+              rootDir: __dirname
+            });
 
             expect(isProfileBuild).toBe(expected);
           });

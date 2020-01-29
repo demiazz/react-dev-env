@@ -1,6 +1,10 @@
+import { isAbsolute, resolve } from "path";
+
 import { checkBooleanEnvironmentVariable } from "./utils";
 
 export interface Environment {
+  readonly rootDir: string;
+
   readonly isProductionBuild: boolean;
   readonly isDevelopmentBuild: boolean;
   readonly isProfileBuild: boolean;
@@ -8,8 +12,18 @@ export interface Environment {
   readonly isAnalyzeBuild: boolean;
 }
 
-export async function createEnvironment(): Promise<Environment> {
+interface EnvironmentOptions {
+  readonly rootDir: string;
+}
+
+export async function createEnvironment(
+  options: EnvironmentOptions
+): Promise<Environment> {
   const nodeEnvironment = process.env.NODE_ENV;
+
+  const rootDir = isAbsolute(options.rootDir)
+    ? options.rootDir
+    : resolve(process.cwd(), options.rootDir);
 
   const isProductionBuild = nodeEnvironment === "production";
   const isDevelopmentBuild = nodeEnvironment === "development";
@@ -19,6 +33,8 @@ export async function createEnvironment(): Promise<Environment> {
   const isAnalyzeBuild = checkBooleanEnvironmentVariable("ANALYZE");
 
   return {
+    rootDir,
+
     isProductionBuild,
     isDevelopmentBuild,
     isProfileBuild,
