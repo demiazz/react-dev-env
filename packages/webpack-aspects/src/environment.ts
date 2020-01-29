@@ -11,6 +11,8 @@ export interface Environment {
   readonly isProfileBuild: boolean;
   readonly isCIBuild: boolean;
   readonly isAnalyzeBuild: boolean;
+
+  readonly cacheDirFor: (aspect: string) => string;
 }
 
 interface EnvironmentOptions {
@@ -37,6 +39,10 @@ export async function createEnvironment(
   const isCIBuild = checkBooleanEnvironmentVariable("CI");
   const isAnalyzeBuild = checkBooleanEnvironmentVariable("ANALYZE");
 
+  function cacheDirFor(aspect: string): string {
+    return resolve(cacheDir, aspect);
+  }
+
   return {
     rootDir,
     cacheDir,
@@ -45,6 +51,8 @@ export async function createEnvironment(
     isDevelopmentBuild,
     isProfileBuild,
     isCIBuild,
-    isAnalyzeBuild
+    isAnalyzeBuild,
+
+    cacheDirFor
   };
 }
