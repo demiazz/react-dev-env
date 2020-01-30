@@ -3,6 +3,7 @@ export { compression } from "./compression";
 export { minification } from "./minification";
 export { misc } from "./misc";
 export { mode } from "./mode";
+export { publicFiles } from "./publicFiles";
 export { sourceMaps } from "./sourceMaps";
 export { styles } from "./styles";
 export { validation } from "./validation";
