@@ -1,5 +1,6 @@
 export { analyze } from "./analyze";
 export { compression } from "./compression";
+export { minification } from "./minification";
 export { misc } from "./misc";
 export { mode } from "./mode";
 export { sourceMaps } from "./sourceMaps";

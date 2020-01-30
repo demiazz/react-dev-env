@@ -5,6 +5,7 @@ import { checkBooleanEnvironmentVariable } from "./utils";
 export interface Environment {
   readonly rootDir: string;
   readonly cacheDir: string;
+  readonly publicDir: string;
 
   readonly isProductionBuild: boolean;
   readonly isDevelopmentBuild: boolean;
@@ -18,6 +19,7 @@ export interface Environment {
 interface EnvironmentOptions {
   readonly rootDir: string;
   readonly cacheDir?: string;
+  readonly publicDir?: string;
 }
 
 function resolveIfRelative(rootDir: string, path: string): string {
@@ -31,6 +33,7 @@ export async function createEnvironment(
 
   const rootDir = resolveIfRelative(process.cwd(), options.rootDir);
   const cacheDir = resolveIfRelative(rootDir, options.cacheDir ?? "cache");
+  const publicDir = resolveIfRelative(rootDir, options.publicDir ?? "public");
 
   const isProductionBuild = nodeEnvironment === "production";
   const isDevelopmentBuild = nodeEnvironment === "development";
@@ -46,6 +49,7 @@ export async function createEnvironment(
   return {
     rootDir,
     cacheDir,
+    publicDir,
 
     isProductionBuild,
     isDevelopmentBuild,
