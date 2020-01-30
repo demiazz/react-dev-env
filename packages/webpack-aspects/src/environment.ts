@@ -7,6 +7,7 @@ export interface Environment {
   readonly cacheDir: string;
   readonly publicDir: string;
   readonly buildDir: string;
+  readonly srcDir: string;
 
   readonly isProductionBuild: boolean;
   readonly isDevelopmentBuild: boolean;
@@ -22,6 +23,7 @@ interface EnvironmentOptions {
   readonly cacheDir?: string;
   readonly publicDir?: string;
   readonly buildDir?: string;
+  readonly srcDir?: string;
 }
 
 function resolveIfRelative(rootDir: string, path: string): string {
@@ -37,6 +39,7 @@ export async function createEnvironment(
   const cacheDir = resolveIfRelative(rootDir, options.cacheDir ?? "cache");
   const publicDir = resolveIfRelative(rootDir, options.publicDir ?? "public");
   const buildDir = resolveIfRelative(rootDir, options.buildDir ?? "build");
+  const srcDir = resolveIfRelative(rootDir, options.srcDir ?? "src");
 
   const isProductionBuild = nodeEnvironment === "production";
   const isDevelopmentBuild = nodeEnvironment === "development";
@@ -54,6 +57,7 @@ export async function createEnvironment(
     cacheDir,
     publicDir,
     buildDir,
+    srcDir,
 
     isProductionBuild,
     isDevelopmentBuild,
