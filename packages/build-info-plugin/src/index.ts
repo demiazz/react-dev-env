@@ -8,7 +8,7 @@ type BuildInfoObject = {
 type BuildInfoArray = BuildInfo[];
 type BuildInfo = BuildInfoPrimitive | BuildInfoObject | BuildInfoArray;
 
-interface Options {
+export interface BuildInfoPluginOptions {
   beautify?: boolean;
   buildInfo?: BuildInfo;
   fileName?: string;
@@ -23,7 +23,7 @@ export class BuildInfoPlugin implements Plugin {
     beautify = false,
     buildInfo = {},
     fileName = "build-info.json"
-  }: Options = {}) {
+  }: BuildInfoPluginOptions = {}) {
     this.beautify = beautify;
     this.fileName = fileName;
     this.buildInfo = buildInfo;
