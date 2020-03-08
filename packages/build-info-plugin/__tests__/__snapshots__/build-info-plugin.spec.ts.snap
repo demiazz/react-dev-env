@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildInfoPlugin default options creates a "build-info.json" file with empty JSON 1`] = `"{}"`;
+
+exports[`BuildInfoPlugin with custom file name creates file with given build info and given file name 1`] = `"{\\"release\\":\\"2.3.4\\"}"`;
+
+exports[`BuildInfoPlugin with enabled "beautify" option creates a "build-info.json" file with formatted build info 1`] = `
+"{
+  \\"release\\": \\"2.3.4\\"
+}"
+`;
+
+exports[`BuildInfoPlugin with user's build info creates a "build-info.json" file with given build info 1`] = `"{\\"release\\":\\"1.2.3\\"}"`;
