@@ -104,7 +104,3 @@ describe("BuildInfoPlugin", () => {
     });
   });
 });
-
-// beautify = false
-// buildInfo = {}
-// fileName = "build-info.json"
