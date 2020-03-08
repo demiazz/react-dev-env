@@ -18,7 +18,7 @@
   "scripts": {
     "clean": "rm -rf ./lib",
     "compile": "yarn clean && yarn tsc --project tsconfig.json",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "yarn jest"
   },
   "bugs": {
     "url": "https://github.com/demiazz/react-dev-env/issues"
@@ -29,7 +29,8 @@
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "@types/webpack": "^4.41.3",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1"
   },
   "dependencies": {
     "@react-dev-env/utils": "^0.4.0"
